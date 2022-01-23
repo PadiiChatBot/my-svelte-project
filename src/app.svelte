@@ -36,23 +36,23 @@ export let name;
     <nav>
       <Link to="/">Counter</Link>
 
-      <Link to="/form">Form</Link>
+      <Link to="form">Form</Link>
 
-      <Link to="/todos">Todo List</Link>
+      <Link to="todos">Todo List</Link>
     </nav>
   </header>
 
   <main>
-    <Route to="/">
-      <Counter counter="{2}" />
-    </Route>
-
-    <Route to="/form">
+    <Route path="form">
       <Form />
     </Route>
 
-    <Route to="/todos">
+    <Route path="todos">
       <TodoList />
+    </Route>
+
+    <Route path="/">
+      <Counter counter="{1}" />
     </Route>
   </main>
 </Router>
