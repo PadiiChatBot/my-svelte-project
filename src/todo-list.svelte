@@ -1,32 +1,31 @@
+<style></style>
+
 <script>
-    import {listTodos} from "./store";
+import { listTodos } from "./store";
 
-    let todos;
+let todos;
 
-    let todo_name;
+let todo_name;
 
-    const unsubscribe = listTodos.subscribe(value => {
-        todos = value
-    })
+const unsubscribe = listTodos.subscribe((value) => {
+  todos = value;
+});
 
-
-    const onAddTodo = ()=>{
-        if(todo_name){
-            listTodos.set([todo_name,...todos])
-            todo_name='';
-        }
-    }
+const onAddTodo = () => {
+  if (todo_name) {
+    listTodos.set([todo_name, ...todos]);
+    todo_name = "";
+  }
+};
 </script>
 
 <section>
-    <hr>
-    <input bind:value={todo_name}/>
+  <hr />
+  <input bind:value="{todo_name}" />
 
-    <button on:click={onAddTodo}>add todo</button>
+  <button on:click="{onAddTodo}">add todo</button>
 
-    {#each [...todos] as todo}
-        <p>{todo}</p>
-    {/each}
+  {#each [...todos] as todo}
+    <p>{todo}</p>
+  {/each}
 </section>
-
-<style></style>

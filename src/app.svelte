@@ -1,42 +1,58 @@
+<style>
+main {
+  text-align: center;
+  padding: 1em;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #ff3e00;
+  text-transform: uppercase;
+  font-size: 4em;
+  font-weight: 100;
+}
+
+@media (min-width: 640px) {
+  main {
+    max-width: none;
+  }
+}
+</style>
+
 <script>
-	import Form from "./form.svelte";
-	import Counter from "./counter.svelte";
-	import TodoList from './todo-list.svelte';
+import Form from "./form.svelte";
+import Counter from "./counter.svelte";
+import TodoList from "./todo-list.svelte";
+import { Router, Route, Link } from "svelte-navigator";
 
-	export let name;
-
+export let name;
 </script>
 
-<main>
-	<h1>Props: {name}!</h1>
+<Router>
+  <header>
+    <h1>Props: {name}!</h1>
 
+    <nav>
+      <Link to="/">Counter</Link>
 
-	<Counter counter={2} />
+      <Link to="/form">Form</Link>
 
-	<Form/>
+      <Link to="/todos">Todo List</Link>
+    </nav>
+  </header>
 
-	<TodoList/>
-</main>
+  <main>
+    <Route to="/">
+      <Counter counter="{2}" />
+    </Route>
 
+    <Route to="/form">
+      <Form />
+    </Route>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+    <Route to="/todos">
+      <TodoList />
+    </Route>
+  </main>
+</Router>
