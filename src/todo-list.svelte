@@ -1,4 +1,13 @@
-<style></style>
+<style>
+.todo {
+  display: flex;
+  justify-content: center;
+}
+
+.todoName {
+  margin-right: 5px;
+}
+</style>
 
 <script>
 import { listTodos } from "./store";
@@ -36,8 +45,8 @@ const onRemoveClick = (index) => {
   <!-- key for each element in the array is not required:) -->
 
   {#each [...todos] as todo, index}
-    <div>
-      <p>{todo}</p>
+    <div class="todo">
+      <p class="todoName">{todo}</p>
 
       <button on:click="{() => onRemoveClick(index)}">Remove</button>
     </div>
