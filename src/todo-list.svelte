@@ -17,15 +17,29 @@ const onAddTodo = () => {
     todo_name = "";
   }
 };
+
+const onRemoveClick = (index) => {
+  // !!! not working  todos.splice(index, 1);
+
+  const newTodos = [...todos];
+  newTodos.splice(index, 1);
+
+  listTodos.set(newTodos);
+};
 </script>
 
 <section>
-  <hr />
   <input bind:value="{todo_name}" />
 
   <button on:click="{onAddTodo}">add todo</button>
 
-  {#each [...todos] as todo}
-    <p>{todo}</p>
+  <!-- key for each element in the array is not required:) -->
+
+  {#each [...todos] as todo, index}
+    <div>
+      <p>{todo}</p>
+
+      <button on:click="{() => onRemoveClick(index)}">Remove</button>
+    </div>
   {/each}
 </section>

@@ -1,4 +1,9 @@
 <style>
+header {
+  display: flex;
+  justify-content: center;
+}
+
 main {
   text-align: center;
   padding: 1em;
@@ -26,13 +31,11 @@ import Counter from "./counter.svelte";
 import TodoList from "./todo-list.svelte";
 import { Router, Route, Link } from "svelte-navigator";
 
-export let name;
+export let name = "default value";
 </script>
 
 <Router>
   <header>
-    <h1>Props: {name}!</h1>
-
     <nav>
       <Link to="/">Counter</Link>
 
@@ -43,6 +46,9 @@ export let name;
   </header>
 
   <main>
+    <hr />
+    <h1>Props: {name}!</h1>
+
     <Route path="form">
       <Form />
     </Route>
