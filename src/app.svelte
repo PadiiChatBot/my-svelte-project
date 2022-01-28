@@ -29,8 +29,17 @@ h1 {
 import Form from "./form.svelte";
 import Counter from "./counter.svelte";
 import TodoList from "./todo-list.svelte";
+import Animation from "./animations.svelte";
 import { Router, Route, Link } from "svelte-navigator";
+import { afterUpdate, beforeUpdate, onDestroy, onMount } from "svelte";
 
+onDestroy(() => {});
+
+beforeUpdate(() => {});
+
+afterUpdate(() => {});
+
+onMount(async () => {});
 export let name = "default value";
 </script>
 
@@ -42,6 +51,8 @@ export let name = "default value";
       <Link to="form">Form</Link>
 
       <Link to="todos">Todo List</Link>
+
+      <Link to="animation">Animation</Link>
     </nav>
   </header>
 
@@ -57,8 +68,12 @@ export let name = "default value";
       <TodoList />
     </Route>
 
+    <Route path="animation">
+      <Animation />
+    </Route>
+
     <Route path="/">
-      <Counter counter="{1}" />
+      <Counter counter="{4}" />
     </Route>
   </main>
 </Router>

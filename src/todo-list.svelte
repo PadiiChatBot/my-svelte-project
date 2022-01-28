@@ -14,16 +14,16 @@ import { listTodos } from "./store";
 
 let todos;
 
-let todo_name;
+let todoName = "";
 
 const unsubscribe = listTodos.subscribe((value) => {
   todos = value;
 });
 
 const onAddTodo = () => {
-  if (todo_name) {
-    listTodos.set([todo_name, ...todos]);
-    todo_name = "";
+  if (todoName) {
+    listTodos.set([todoName.trim(), ...todos]);
+    todoName = "";
   }
 };
 
@@ -38,13 +38,13 @@ const onRemoveClick = (index) => {
 </script>
 
 <section>
-  <input bind:value="{todo_name}" />
+  <input bind:value="{todoName}" />
 
-  <button on:click="{onAddTodo}">add todo</button>
+  <button disabled="{!todoName.trim()}" on:click="{onAddTodo}">add todo</button>
 
   <!-- key for each element in the array is not required:) -->
 
-  {#each [...todos] as todo, index}
+  {#each todos as todo, index}
     <div class="todo">
       <p class="todoName">{todo}</p>
 
